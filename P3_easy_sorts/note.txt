@@ -1,0 +1,6 @@
+             time                              space
+
+
+bubble       O(n*n)                            O(1)
+select       O(n*n)                            O(1)
+insertSort   worst:O(n*n)/best:O(n)            O(1)
