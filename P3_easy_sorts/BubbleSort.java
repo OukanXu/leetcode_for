@@ -1,4 +1,4 @@
-package leetcode_for.P3_easy_sorts;
+package P3_easy_sorts;
 /*
  * 相邻两位对比，大的放在右侧，一次循环选择出最大的在最右侧
  */

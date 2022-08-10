@@ -1,4 +1,4 @@
-package leetcode_for.P3_easy_sorts;
+package P3_easy_sorts;
 /*
  * j为有序数组的最后一位，与无序数组第一位对比，交换
  */

@@ -1,4 +1,4 @@
-package leetcode_for.P3_easy_sorts;
+package P3_easy_sorts;
 /*
  * 从第一位开始，选择最小的，如果不是最小的，交换，一次循环选择出最小的一位在最左
  */
