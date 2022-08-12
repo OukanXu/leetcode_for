@@ -1,5 +1,7 @@
 package P4_NlogN_Sorts;
 
+
+// Space : 最好logN/最差N
 public class QuickSort {
     /*
      * 荷兰国旗问题
@@ -34,7 +36,7 @@ public class QuickSort {
      //arr[L...R]排好序
      public static void quickSort(int[] arr, int L, int R){
         if(L < R){
-            swap(arr,L + (int)(Math.random() * (R-L+1)));//等概率随机选择一个位置，与最右侧换
+            swap(arr,L + (int)(Math.random() * (R-L+1)),R);//等概率随机选择一个位置，与最右侧换
             int [] p = partition(arr, L, R);//该数组长度为2，是等于最后一位数的数的下标范围
             quickSort(arr, L, p[0]-1);//小于区域递归
             quickSort(arr, p[1]+1, R);//大于区域递归
@@ -58,6 +60,13 @@ public class QuickSort {
         }
         swap(arr,more,R);
         return new int[] {less+1, more};
+     }
+
+     public static void swap(int[] arr, int i, int j){
+        int temp;
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
      }
 
 }
