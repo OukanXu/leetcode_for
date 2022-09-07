@@ -20,15 +20,15 @@ public class HeapSort {
 
     //返回最大值（arr[0]）,并且剩余仍为大顶堆：将arr[0]与arr[arr.length-1]交换，heapSize-1， 再执行heapify操作，最终得到大顶堆
     //某个数在index位置，能否往下移动
-    public static void heapify(int[] arr, int index, int heapSize){
-        int left = index*2+1;//左孩子
+    public static void heapify(int[] arr, int index, int heapSize){ //index 指从哪个位置开始做heapify
+        int left = index*2+1;//左孩子下标
 
-        while(left < heapSize){
-            //两个孩子中谁大，把下标给largest
+        while(left < heapSize){//当下方还有左孩子时
+            //两个孩子中谁大，把下标给largest，向下遍历
             int largest = left+1 < heapSize && arr[left+1] > arr[left] ? left+1 : left;
             // 父和较大子中谁大，把下标给largest
             largest = arr[largest] > arr[index] ? largest : index;
-            if(largest == index){
+            if(largest == index){//如果largest为父节点的值，不继续向下走
                 break;
             }
             swap(arr, largest, index);

@@ -38,8 +38,8 @@ public class QuickSort {
         if(L < R){
             swap(arr,L + (int)(Math.random() * (R-L+1)),R);//等概率随机选择一个位置，与最右侧换
             int [] p = partition(arr, L, R);//该数组长度为2，是等于最后一位数的数的下标范围
-            quickSort(arr, L, p[0]-1);//小于区域递归
-            quickSort(arr, p[1]+1, R);//大于区域递归
+            quickSort(arr, L, p[0]-1);//在小于区域递归
+            quickSort(arr, p[1]+1, R);//在大于区域递归
         }
      }
 
@@ -51,9 +51,9 @@ public class QuickSort {
         int more = R; // >左边界
         while(L < more){
             if(arr[L] < arr[R]){
-                swap(arr, ++less, L++);
+                swap(arr, ++less, L++);//与小于区域的下一个做交换，小于区域+1，L向右一位
             }else if(arr[L] > arr[R]){
-                swap(arr, --more, L);
+                swap(arr, --more, L);//与大于区域的前一个做交换，大于区域+1，L不变
             }else{
                 L++;
             }

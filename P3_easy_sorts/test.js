@@ -42,5 +42,5 @@ function insert(arr){
 }
 
 
-console.log(insert([1,4,6,89,5,7,2,3]));
+console.log((5-0>>1));
 

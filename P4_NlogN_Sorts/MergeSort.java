@@ -7,7 +7,7 @@ package P4_NlogN_Sorts;
 
  public class MergeSort{
 
-    public static void process(int[] arr, int L, int R){
+    public static void process(int[] arr, int L, int R){//让数组在L到R范围内有序
         if(L==R){
             return;
         }
@@ -17,7 +17,7 @@ package P4_NlogN_Sorts;
         merge(arr,L,mid,R);
     }
 
-    public static void merge(int[] arr, int L, int M, int R){
+    public static void merge(int[] arr, int L, int M, int R){//已知L - M，M+1 - R 都有序，求使L - R 有序
         int[] help = new int[R-L+1];
         int i = 0;
         int p1 = L;
