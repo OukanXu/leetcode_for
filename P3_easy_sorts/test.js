@@ -42,5 +42,5 @@ function insert(arr){
 }
 
 
-console.log((5-0>>1));
+console.log(-1%3);
 
