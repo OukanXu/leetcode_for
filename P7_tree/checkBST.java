@@ -6,7 +6,7 @@ public class checkBST {
     public static int preValue = Integer.MIN_VALUE;
 
     //判断是否为搜索二叉树
-    public static boolean checkBST(Node head){
+    public boolean checkBST(Node head){
         if(head == null){
             return true;
         }
