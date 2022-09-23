@@ -1,4 +1,4 @@
-package P10;
+package P10_Recursion;
 
 public class Code09_NQueens {
     public static int num1(int n){

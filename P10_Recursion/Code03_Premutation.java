@@ -1,4 +1,4 @@
-package P10;
+package P10_Recursion;
 
 import java.util.ArrayList;
 

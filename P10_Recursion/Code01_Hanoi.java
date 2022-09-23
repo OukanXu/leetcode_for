@@ -1,4 +1,4 @@
-package P10;
+package P10_Recursion;
 
 public class Code01_Hanoi {
     public static void hanoi(int n){

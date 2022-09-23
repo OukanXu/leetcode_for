@@ -1,4 +1,4 @@
-package P10;
+package P10_Recursion;
 
 public class Code08_CardsInLine {
     public static int win1(int[] arr){
