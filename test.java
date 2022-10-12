@@ -19,5 +19,11 @@ public class test {
         arr[j] = temp;
     }
 
-    public static void main()
+    public static void main(String[] args){
+        int a = 1;
+        int b = a;
+        a = 2;
+
+        System.out.println(b);
+    }
 }
