@@ -24,6 +24,15 @@ public class test {
         int b = a;
         a = 2;
 
-        System.out.println(b);
+        String str = new String("1->");
+
+        System.out.println(str);
+
+        str = str + "->";
+
     }
+
+
+
+    
 }
