@@ -24,11 +24,11 @@ public class test {
         int b = a;
         a = 2;
 
-        String str = new String("1->");
+        int s = 4;
+        double target = 3.71;
+        double min = s-target;
+        System.out.println(min);
 
-        System.out.println(str);
-
-        str = str + "->";
 
     }
 
