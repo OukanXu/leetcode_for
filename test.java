@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class test {
     public void sortColors(int[] nums) {
         for(int i = 0; i < nums.length; i++){
@@ -20,16 +22,13 @@ public class test {
     }
 
     public static void main(String[] args){
-        int a = 1;
-        int b = a;
-        a = 2;
+        HashMap<Character,Integer> map = new HashMap<>();
 
-        int s = 4;
-        double target = 3.71;
-        double min = s-target;
-        System.out.println(min);
+        map.put('1',1);
 
-
+        int a = map.get('0');
+        System.out.println(a);
+ 
     }
 
 
