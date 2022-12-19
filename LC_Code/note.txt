@@ -256,3 +256,37 @@ int getHits(int timestamp) 返回 timestamp 在过去 5 分钟内(即过去 3
 
 解法：
 简单：用队列储存timestamp，用count来统计，每次要判断队列是否在新的timestamp-300之内，不是就弹出
+
+
+364. Nested List Weight Sum II
+返回一个列表的加权和  权重 = MaxDeep - deep + 1
+
+解法一： dfs整个列表，获取maxDeep， 再dfs列表，求sum  两遍dfs
+解法二： dfs整个列表，记录当前深度以及在该深度下的元素和，然后计算sum   一遍dfs
+
+
+365. Water and Jug Problem
+整数中的裴蜀定理
+对任意两个整数a、b，设d是它们的最大公约数。那么关于未知数x和y的线性丢番图方程（称为 裴蜀等式 ）：
+ax + by = m
+有整数解（x,y）当且仅当m是d的倍数
+最大公约数用辗转相除法求得
+
+
+366. Find Leaves of Binary Tree
+给你一棵二叉树，请按以下要求的顺序收集它的全部节点：
+
+依次从左到右，每次收集并删除所有的叶子节点
+重复如上过程直到整棵树为空
+
+解： 其实就是对节点计算从叶子到根的深度，相同深度的组合一起
+
+
+
+368. Largest Divisible Subset(最大整除数的集合)
+给你一个由 无重复 正整数组成的集合 nums ，请你找出并返回其中最大的整除子集 answer ，子集中每一元素对 (answer[i], answer[j]) 都应当满足：
+answer[i] % answer[j] == 0 ，或
+answer[j] % answer[i] == 0
+如果存在多个有效解子集，返回其中任何一个均可
+
+解： sort + dp 
