@@ -28,3 +28,31 @@ class Solution {
         return result;
     }
 }
+
+
+
+
+//round 2
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int left = 0;
+        int right = 0;
+        HashMap<Character,Integer> map = new HashMap<>();
+
+        int n = s.length();
+        int res = 0;
+
+        while(right < n){
+            if(!map.containsKey(s.charAt(right))){
+                map.put(s.charAt(right),right);
+            }else{
+
+                left = Math.max(left,map.get(s.charAt(right))+1);
+                map.put(s.charAt(right),right);
+            }
+            res = Math.max(res,right-left+1);
+            right++;
+        }
+        return res;
+    }
+}

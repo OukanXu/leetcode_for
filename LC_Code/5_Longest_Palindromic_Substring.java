@@ -75,3 +75,51 @@ class Solution {
         return newchar;
     }
 }
+
+
+
+
+//round 2
+class Solution {
+    public String longestPalindrome(String s) {
+        int start = -1;
+        int end = -1;
+        int maxLength = 1;
+        char[] charArr = manacherString(s);
+        for(int i = 0; i < charArr.length; i++){
+            int left = i-1;
+            int right = i+1;
+            while(left >= 0 && right < charArr.length){
+                // System.out.println(charArr[left]);
+                // System.out.println(charArr[right]);
+                // System.out.println(charArr[left] == charArr[right]);
+                if(charArr[left] == charArr[right]){
+                    if(right-left+1 > maxLength){
+                        maxLength = right-left+1;
+                        start = left;
+                        end = right;
+                    }
+                    left--;
+                    right++;
+                }else{
+                    break;
+                }
+            }
+        }
+        String res = "";
+        for(int i = start; i <= end; i++){
+            res += (charArr[i] == '#' ? "" : charArr[i]);
+        }
+        return res;
+    }
+
+    public char[] manacherString(String s){
+        char[] charArr = s.toCharArray();
+        char[] res = new char[charArr.length*2+1];
+        int index = 0;
+        for(int i = 0; i < res.length; i++){
+            res[i] = (i&1) == 0 ? '#' : charArr[index++];
+        }
+        return res;
+    }
+}

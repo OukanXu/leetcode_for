@@ -26,3 +26,26 @@ class Solution {
         return maxArea;
     }
 }
+
+
+//round 2
+class Solution {
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length-1;
+
+        int max = 0;
+        while(left < right){
+            int less = Math.min(height[left],height[right]);
+            int area = (right-left)*less;
+            max = Math.max(max,area);
+
+            if(height[left] == less){
+                left++;
+            }else{
+                right--;
+            }
+        }
+        return max;
+    }
+}
