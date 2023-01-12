@@ -37,3 +37,47 @@ class Solution {
         }
     }
 }
+
+
+
+//round 2
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        
+        HashMap<Character,String> map = new HashMap<>();
+
+        map.put('2',"abc");
+        map.put('3',"def");
+        map.put('4',"ghi");
+        map.put('5',"jkl");
+        map.put('6',"mno");
+        map.put('7',"pqrs");
+        map.put('8',"tuv");
+        map.put('9',"wxyz");
+
+        List<String> res = new ArrayList<>();
+        int n = digits.length();
+
+        if(digits.equals("")){
+            return res;
+        }
+        dfs(digits,map,res,0,n,new StringBuilder());
+        return res;
+    }
+
+    public void dfs(String digits, HashMap<Character,String> map, List<String> res, int index, int n, StringBuilder sb){
+        if(index == n){
+            res.add(sb.toString());
+            return;
+        }
+
+        String temp = map.get(digits.charAt(index));
+
+        for(Character c : temp.toCharArray()){
+            sb.append(c);
+            dfs(digits,map,res,index+1,n,sb);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        return;
+    }
+}

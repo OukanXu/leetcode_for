@@ -41,3 +41,54 @@
     }
     return res;
 };
+
+
+//round 2
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+
+        List<List<Integer>> res = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++){
+            int target = -nums[i];
+
+            if(target < 0) break;
+            if( i > 0 && nums[i] == nums[i-1]) continue;
+
+            int left = i+1;
+            int right = nums.length-1;
+
+            while(left < right){
+                int temp = nums[left] + nums[right];
+
+                if(temp > target){
+                    while(right-1 >= 0 && nums[right] == nums[right-1] && left < right){
+                        right--;
+                    }
+                    right--;
+                }else if(temp < target){
+                    while(left+1 < nums.length && nums[left] == nums[left+1] &&  left < right){
+                        left++;
+                    }
+                    left++;
+                }else{
+                    List<Integer> temp1 = new ArrayList<>();
+                    temp1.add(-target);
+                    temp1.add(nums[left]);
+                    temp1.add(nums[right]);
+                    res.add(temp1);
+                    while(left+1 < nums.length && nums[left] == nums[left+1] &&  left < right){
+                        left++;
+                    }
+                    while(right-1 >= 0 && nums[right] == nums[right-1] && left < right){
+                        right--;
+                    }
+                    left++;
+                    right--;
+                }
+            }
+        }
+
+        return res;
+    }
+}
