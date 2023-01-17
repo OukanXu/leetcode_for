@@ -38,3 +38,44 @@ class Solution {
         return res;
     }
 }
+
+
+
+//round 2
+class Solution {
+    public int divide(int dividend, int divisor) {
+
+        if(dividend == 0) return 0;
+        if(divisor == 1) return dividend;
+        if(dividend == Integer.MIN_VALUE && divisor == -1){
+            return Integer.MAX_VALUE;
+        }
+
+        int flag = 1;
+        if(dividend < 0){
+            flag = -flag;
+        }
+        if(divisor < 0){
+            flag = -flag;
+        }
+
+        int count = getdivide(-Math.abs(dividend),-Math.abs(divisor));
+
+        return flag == 1 ? count : -count;
+
+
+    }
+
+
+    public int getdivide(int dividend, int divisor){
+        if(dividend > divisor) return 0;
+        int count = 1;
+        int temp = divisor;
+        while(temp + temp >= dividend && temp >= (Integer.MIN_VALUE>>1)){
+            temp = temp<<1;
+            count = count<<1;
+        }
+
+        return count + getdivide(dividend-temp, divisor);
+    }
+}

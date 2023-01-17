@@ -66,3 +66,41 @@ class Solution {
 
     }
 }
+
+
+
+
+
+//round 2
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head != null && head.next != null){
+            ListNode pre = head.next;
+            head.next = swapPairs(pre.next);
+            pre.next = head;
+            return pre;
+        }else{
+            return head;
+        }
+
+    }
+}
+
+
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        ListNode pre = new ListNode(0,head);
+        ListNode temp = pre;
+
+        while(temp.next != null && temp.next.next != null){
+            ListNode head1 = temp.next;
+            ListNode head2 = temp.next.next;
+
+            head1.next = head2.next;
+            temp.next = head2;
+            head2.next = head1;
+            temp = head1;
+        }
+        return pre.next;
+    }
+}

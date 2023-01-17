@@ -60,3 +60,46 @@ class Solution {
         return preNext;
     }
 }
+
+
+
+//round 2
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int[] preSum = getPre(needle);
+
+        int j = 0;
+        for(int i = 0; i < haystack.length(); i++){
+            while(j > 0 && haystack.charAt(i) != needle.charAt(j)){
+                j = preSum[j-1];
+            }
+
+            if(haystack.charAt(i) == needle.charAt(j)){
+                j++;
+            }
+            if(j == needle.length()){
+                return i-j+1;
+            }
+        }
+        return -1;
+    }
+
+
+    public int[] getPre(String str){
+        int[] preSum = new int[str.length()+1];
+
+        int j = 0;
+
+        for(int i = 1; i < str.length(); i++){
+            while(j > 0 && str.charAt(j) != str.charAt(i)){
+                j = preSum[j-1];
+            }
+
+            if(str.charAt(j) == str.charAt(i)){
+                j++;
+            }
+            preSum[i] = j;
+        }
+        return preSum;
+    }
+}

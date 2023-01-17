@@ -35,3 +35,32 @@ class Solution {
         }
     }
 }
+
+// round 2
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        int[] visited = new int[nums.length];
+
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
+
+        dfs(nums, visited, temp, res);
+        return res;
+    }
+
+    public void dfs(int[] nums, int[] visited, List<Integer> temp, List<List<Integer>> res){
+        if(temp.size() == nums.length){
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int i = 0; i < nums.length; i++){
+            if(visited[i] == 1) continue;
+            temp.add(nums[i]);
+            visited[i] = 1;
+            dfs(nums,visited,temp,res);
+            temp.remove(temp.size()-1);
+            visited[i] = 0;
+        }
+    }
+}

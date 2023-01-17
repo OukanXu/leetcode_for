@@ -27,3 +27,34 @@ class Solution {
         arr[j] = temp;
     }
 }
+
+
+//round 2
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int slow = 0;
+        int fast = slow+1;
+
+        int n = nums.length;
+        int sum = 1;
+
+        while(fast < n){
+            if(nums[slow] == nums[fast]){
+                fast++;
+            }else{
+                swap(nums,slow+1,fast);
+                slow++;
+                fast++;
+                sum++;
+
+            }
+        }
+        return sum;
+    }
+
+    public void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}

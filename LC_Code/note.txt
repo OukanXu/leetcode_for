@@ -102,16 +102,118 @@
 
 解： dfs/dp
 
+24. Swap Nodes in Pairs
+给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题
+
+解： 递归/迭代
+
+
+
+26. Remove Duplicates from Sorted Array
+原地更改数组，保留前K个不重复项
+
+解： 双指针，记录每个不重复的位置
+
+
+27. Remove Element
+原地删除数组中等于val的值，不改变数组长度
+
+解： 双指针
+
+
+
+28. Find the Index of the First Occurrence in a String
+给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串的第一个匹配项的下标（下标从 0 开始）。如果 needle 不是 haystack 的一部分，则返回  -1
+
+解： KMP算法运用
+
+
+
+29. Divide Two Integers
+两数相除，不能用乘除和取余
+
+
+解： 用快速幂，每次*2
+
+
+31. Next Permutation
+给一个整数数组，返回下一个字典序
+
+解： 找出从后往前的峰谷，再找出第一个大于峰谷的数，交换，然后排序
+
+
+33. Search in Rotated Sorted Array
+旋转数组的二分查找
+
+解： 先确定left和mid的位置关系，再考虑target
+
+
+34. Find First and Last Position of Element in Sorted Array
+给你一个按照非递减顺序排列的整数数组 nums，和一个目标值 target。请你找出给定目标值在数组中的开始位置和结束位置。
+
+如果数组中不存在目标值 target，返回 [-1, -1]
+
+解： 二分查找
+
+35. Search Insert Position
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置
+
+解： 二分查找
+
+
+36. Valid Sudoku
+验证数独是否有效
+
+解： 哈希表， 要看在哪个小方块里面  j/3 + (i/3)*3
+
+
+38. Count and Say
+给定一个正整数 n ，输出外观数列的第 n 项。
+
+「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。
+
+你可以将其视作是由递归公式定义的数字字符串序列
+
+解： 递归，每次更新字符串，用for来模拟递归
 
 
 
 
+39. Combination Sum
+给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，
+找出 candidates 中可以使数字和为目标数 target 的 所有 不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合
+
+解： 递归+回溯
+
+
+40. Combination Sum II
+给定一个候选人编号的集合 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+
+candidates 中的每个数字在每个组合中只能使用 一次
+
+解： 递归+回溯， 同时要判断同一层递归是否有重复（优化： 可以记录每个数字出现的次数，讨论每次使用的情况，如果次数用完，就得使用下一个数字）
 
 
 
+45. Jump Game II
+给定一个长度为 n 的 0 索引整数数组 nums。初始位置为 nums[0]。
+
+每个元素 nums[i] 表示从索引 i 向前跳转的最大长度。换句话说，如果你在 nums[i] 处，你可以跳转到任意 nums[i + j] 处
+
+解： dp+贪心 从数组头开始，找到下一步能跑最远的下标 next，不断更新 
+
+
+46. Permutations
+给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案
+
+解： 递归+回溯  找个东西记住已经访问过的数字（数组或者动态数组） visited数组更快
 
 
 
+47. Permutations II
+给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列
+
+解： 递归+回溯 找个东西记住已经访问过的数字（数组或者动态数组） 对于同一递归层下，相同的元素要跳过  visited数组更快
 
 
 
