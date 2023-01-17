@@ -42,3 +42,79 @@ public void process(int len, ArrayList<Integer> tempArray, ArrayList<Integer> ne
     }
 }
 }
+
+
+
+
+
+//round 2
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);
+
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
+
+        List<Integer> newNums = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++){
+            newNums.add(nums[i]);
+        }
+
+        dfs(newNums,temp,res);
+        return res;
+    }
+
+    public void dfs(List<Integer> newNums, List<Integer> temp, List<List<Integer>> res){
+        if(newNums.size() == 0){
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int i = 0; i < newNums.size(); i++){
+            if(i-1 >= 0 && newNums.get(i) == newNums.get(i-1)) continue;
+
+            int number = newNums.get(i);
+            temp.add(number);
+            newNums.remove(i);
+            dfs(newNums,temp,res);
+            newNums.add(i,number);
+            temp.remove(temp.size()-1);
+        }
+    }
+}
+
+
+
+//use visited[]   faster
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);
+
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
+
+        boolean[] visited = new boolean[nums.length];
+
+        dfs(nums,visited,temp,res);
+        return res;
+    }
+
+
+    public void dfs(int[] nums, boolean[] visited, List<Integer> temp, List<List<Integer>> res){
+        if(temp.size() == nums.length){
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int i = 0; i < nums.length; i++){
+            if(visited[i]) continue;
+            if(i-1 >= 0 && nums[i] == nums[i-1] && !visited[i-1]) continue;
+
+            temp.add(nums[i]);
+            visited[i] = true;
+            dfs(nums,visited,temp,res);
+            temp.remove(temp.size()-1);
+            visited[i] = false;
+        }
+    }
+}
