@@ -19,3 +19,27 @@ class Solution {
         return index;
     }
 }
+
+
+//round 2
+class Solution {
+    public int mySqrt(int x) {
+        if(x == 0 || x==1){
+            return x;
+        }
+        long left = 0;
+        long right = x;
+
+        int res = -1;
+        long mid = 0;
+        while(left < right){
+            mid = left + (right-left)/2;
+            if(mid * mid <= x){
+                left = mid + 1;
+            }else{
+                right = mid;
+            }
+        }
+        return (int)(left-1);
+    }
+}
