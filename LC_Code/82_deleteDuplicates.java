@@ -33,3 +33,35 @@ class Solution {
         return pre.next;
     }
 }
+
+//round 2
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null){
+            return head;
+        }
+        ListNode dummy = new ListNode(101,head);
+
+        ListNode left = dummy;
+        ListNode right = dummy;
+        right = right.next;
+        int temp = 101;
+        while(right.next != null){
+            if(right.val == right.next.val){
+                temp = right.val;
+                while(right.val == temp && right.next != null){
+                    right = right.next;
+                }
+                left.next = right;
+            }else{
+                left = left.next;
+                right = right.next;
+            }
+        }
+
+        if(right.val == temp){
+            left.next = right.next;
+        }
+        return dummy.next;
+    }
+}

@@ -34,3 +34,43 @@ class Solution {
 
     }
 }
+
+
+//round 2
+class Solution {
+    public boolean res = false;
+    public boolean exist(char[][] board, String word) {
+        int m = board.length;
+        int n = board[0].length;
+        
+        boolean[][] visited = new boolean[m][n];
+
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(board[i][j] == word.charAt(0)){
+                    dfs(board,0,word,visited,i,j);
+                }
+            }
+        }
+        return res;
+    }
+
+    public void dfs(char[][] board, int index, String word, boolean[][] visited, int i, int j){
+        if(index == word.length()){
+            res = true;
+            return;
+        }
+
+        if(i < 0 || i > board.length-1 || j < 0 || j > board[0].length-1 || visited[i][j] == true || board[i][j] != word.charAt(index) || index > word.length()-1 || res == true){
+            return;
+        }
+
+        visited[i][j] = true;
+        dfs(board,index+1,word,visited,i-1,j);
+        dfs(board,index+1,word,visited,i+1,j);
+        dfs(board,index+1,word,visited,i,j-1);
+        dfs(board,index+1,word,visited,i,j+1);
+        visited[i][j] = false;
+
+    }
+}
