@@ -30,3 +30,45 @@ class Solution {
         return res;
     }
 }
+
+//round 2
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int rowLeft = 0;
+        int rowRight = m-1;
+        int rowMid = 0;
+        while(rowLeft <= rowRight){
+            rowMid = rowLeft + (rowRight-rowLeft)/2;
+            if(target < matrix[rowMid][0]){
+                rowRight = rowMid-1;
+            }else if(target > matrix[rowMid][n-1]){
+                rowLeft = rowMid+1;
+            }else{
+                break;
+            }
+        }
+
+        if(rowMid >= m){
+            return false;
+        }
+
+        int left = 0;
+        int right = n-1;
+        while(left <= right){
+            int mid = left + (right-left)/2;
+
+            if(target < matrix[rowMid][mid]){
+                right = mid-1;
+            }else if( target > matrix[rowMid][mid]){
+                left = mid+1;
+            }else if(target == matrix[rowMid][mid]){
+                return true;
+            }
+        }
+        return false;
+
+    }
+}
