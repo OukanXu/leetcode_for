@@ -16,3 +16,38 @@ class Solution {
         return dp[s.length()];
     }
 }
+
+
+//round 2
+class Solution {
+    public int numDecodings(String s) {
+        
+        int n = s.length();
+        int[] dp = new int[n+1];
+
+        dp[0] = 1;
+        int index = 1;
+
+        while(index <= n){
+            
+
+            
+            int cur = s.charAt(index-1) - '0';
+            
+
+            if(cur >= 1 && cur <= 9){
+                dp[index] += dp[index-1];
+            }
+            if(index > 1){
+                int pre = s.charAt(index-2) - '0';
+                int temp = pre*10 + cur;
+                if(pre >= 1 && pre <= 2 && temp >= 10 && temp <= 26 && s.charAt(index-2) - '0' != 0){
+                    dp[index] += dp[index-2];
+                }
+            }
+            
+            index++;
+        }
+        return dp[n];
+    }
+}

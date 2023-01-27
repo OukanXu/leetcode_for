@@ -30,3 +30,28 @@ class Solution {
         return pre.next;
     }
 }
+
+
+
+//round 2
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(101,head);
+
+        ListNode fast = dummy.next;
+        ListNode slow = dummy;
+
+        while(fast != null){
+            if(fast.val != slow.val){
+                fast = fast.next;
+                slow = slow.next;
+            }else{
+                while(fast != null && fast.val == slow.val){
+                    fast = fast.next;
+                }
+                slow.next = fast;
+            }
+        }
+        return dummy.next;
+    }
+}

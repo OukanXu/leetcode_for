@@ -52,3 +52,37 @@ class Solution {
         return res;
     }
 }
+
+
+
+//round 2
+class Solution {
+    public List<TreeNode> generateTrees(int n) {
+        
+        
+        return dfs(1,n);
+    }
+
+    public List<TreeNode> dfs(int start, int end){
+        List<TreeNode> res = new ArrayList<>();
+        if(start > end){
+            res.add(null);
+            return res;
+        }
+
+        for(int i = start; i <= end; i++){
+            List<TreeNode> leftNodes = dfs(start,i-1);
+            List<TreeNode> rightNodes = dfs(i+1,end);
+
+            for(TreeNode leftChild : leftNodes){
+                for(TreeNode rightChild : rightNodes){
+                    TreeNode root = new TreeNode(i);
+                    root.left = leftChild;
+                    root.right = rightChild;
+                    res.add(root);
+                }
+            }
+        }
+        return res;
+    }
+}

@@ -40,3 +40,32 @@ class Solution {
     return pre.next;
     }
 }
+
+
+//round 2
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode dummy = new ListNode(101,head);
+
+        ListNode smallDummy = new ListNode(102,head);
+        ListNode largeDummy = new ListNode(103,head);
+        ListNode small = smallDummy;
+        ListNode large = largeDummy;
+
+        while(head != null){
+            if(head.val < x){
+                small.next = head;
+                head = head.next;
+                small = small.next;
+            }else{
+                large.next = head;
+                head = head.next;
+                large = large.next;
+            }
+        }
+        large.next = null;
+        small.next = largeDummy.next;
+        return smallDummy.next;
+
+    }
+}
