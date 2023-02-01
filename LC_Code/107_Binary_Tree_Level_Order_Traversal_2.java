@@ -51,3 +51,31 @@ class Solution {
         return result;
     }
 }
+
+//round 2
+class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null){
+            return res;
+        }
+        Deque<TreeNode> list = new LinkedList<>();
+        int tempLength = 1;
+
+        list.add(root);
+
+
+        while(!list.isEmpty()){
+            List<Integer> temp = new ArrayList<>();
+            for(int i = 0; i < tempLength; i++){
+                TreeNode node = list.pollFirst();
+                if(node.left != null) list.add(node.left);
+                if(node.right != null) list.add(node.right);
+                temp.add(node.val);
+            }
+            res.add(0,temp);
+            tempLength = list.size();
+        }
+        return res;
+    }
+}

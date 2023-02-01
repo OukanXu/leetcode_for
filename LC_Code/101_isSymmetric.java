@@ -118,3 +118,25 @@ class Solution {
     }
 }
 }
+
+
+
+//round 2
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        return dfs(root.left, root.right);
+    }
+
+    public boolean dfs(TreeNode temp1, TreeNode temp2){
+        if(temp1 == null && temp2 != null){
+            return false;
+        }else if(temp1 != null && temp2 == null){
+            return false;
+        }else if(temp1 == null && temp2 == null){
+            return true;
+        }
+
+        return (temp1.val == temp2.val)&& dfs(temp1.left,temp2.right)&&dfs(temp1.right, temp2.left);
+
+    }
+}

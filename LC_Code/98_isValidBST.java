@@ -99,3 +99,74 @@ class Solution {
         }
     }
 }
+
+
+
+//round 2
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+ public class ReturnType{
+    boolean isBST;
+    int min;
+    int max;
+
+    public ReturnType(boolean is, int mi, int ma){
+        isBST = is;
+        min = mi;
+        max = ma;
+    }
+}
+
+
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return dfs(root).isBST;
+    }
+
+    public ReturnType dfs(TreeNode root){
+        if(root == null){
+            return null;
+        }
+
+        ReturnType leftData = dfs(root.left);
+        ReturnType rightData = dfs(root.right);
+
+        boolean res = true;
+        int tempMax = root.val;
+        int tempMin = root.val;
+
+
+        if(leftData != null){
+            tempMax = Math.max(tempMax, leftData.max);
+            tempMin = Math.min(tempMin, leftData.min);
+        }
+
+        if(rightData != null){
+            tempMax = Math.max(tempMax, rightData.max);
+            tempMin = Math.min(tempMin, rightData.min);
+        }
+
+        if(leftData != null && (!leftData.isBST || root.val <= leftData.max)){
+            res = false;
+        }
+
+        if(rightData != null && (!rightData.isBST || root.val >= rightData.min)){
+            res = false;
+        }
+        return new ReturnType(res,tempMin,tempMax);
+    }
+}

@@ -52,3 +52,32 @@ class Solution {
         return slow;
     }
 }
+
+
+//round 2
+class Solution {
+    public TreeNode sortedListToBST(ListNode head) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        while(head != null){
+            list.add(head.val);
+            head = head.next;
+        }
+
+        return dfs(list,0,list.size()-1);
+    }
+
+    public TreeNode dfs(ArrayList<Integer> list, int start, int end){
+        if(start > end){
+            return null;
+        }
+
+        int mid = start + (end-start)/2;
+
+        TreeNode root = new TreeNode(list.get(mid));
+
+        root.left = dfs(list,start,mid-1);
+        root.right = dfs(list, mid+1,end);
+        return root;
+    }
+}

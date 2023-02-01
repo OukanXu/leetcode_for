@@ -54,3 +54,41 @@ class Solution {
         dfs(node.right,list);
     }
 }
+
+
+//round 2
+class Solution {
+    public void recoverTree(TreeNode root) {
+        ArrayList<TreeNode> list = new ArrayList<>();
+
+        dfs(list,root);
+        TreeNode x = null;
+        TreeNode y = null;
+
+
+        for(int i = 0; i+1 < list.size(); i++){
+            if(list.get(i).val < list.get(i+1).val){
+                continue;
+            }
+            y = list.get(i+1);
+            if(x == null){
+                x = list.get(i);
+            }
+        }
+
+        int temp = 0;
+        temp = x.val;
+        x.val = y.val;
+        y.val = temp;
+    }
+
+    public void dfs(ArrayList<TreeNode> list, TreeNode root){
+        if(root == null){
+            return;
+        }
+
+        dfs(list,root.left);
+        list.add(root);
+        dfs(list,root.right);
+    }
+}

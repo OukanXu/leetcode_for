@@ -52,3 +52,33 @@ class Solution {
         return root;
     }
 }
+
+
+//round 2
+class Solution {
+    HashMap<Integer,Integer> map = new HashMap<>();
+    int[] post;
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        post = postorder;
+        for(int i = 0; i < inorder.length; i++){
+            map.put(inorder[i],i);
+        }
+
+        return dfs(0,inorder.length-1, 0, postorder.length-1);
+    }
+
+    public TreeNode dfs(int inStart, int inEnd, int postStart, int postEnd){
+        if(inStart > inEnd || postStart > postEnd){
+            return null;
+        }
+
+        int value = post[postEnd];
+        int rootIndex = map.get(value);
+
+        TreeNode root = new TreeNode(value);
+
+        root.left = dfs(inStart,rootIndex-1,postStart,postStart+rootIndex-inStart-1);
+        root.right = dfs(rootIndex+1,inEnd,postEnd-(inEnd-rootIndex),postEnd-1);
+        return root;
+    }
+}
