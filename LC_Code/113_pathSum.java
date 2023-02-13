@@ -48,3 +48,40 @@ class Solution {
         path.pollLast();
     }
 }
+
+
+//round 2
+class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
+
+        dfs(root,targetSum,temp,res);
+        return res;
+    }
+
+    public void dfs(TreeNode root, int targetSum, List<Integer> temp, List<List<Integer>> res){
+        if(root == null){
+            return;
+        }
+
+        if(root.left == null && root.right == null && root.val == targetSum){
+            temp.add(root.val);
+            res.add(new ArrayList<>(temp));
+            temp.remove(temp.size()-1);
+            return;
+        }
+
+        if(root.left != null){
+            temp.add(root.val);
+            dfs(root.left, targetSum-root.val, temp, res);
+            temp.remove(temp.size()-1);
+        }
+
+        if(root.right != null){
+            temp.add(root.val);
+            dfs(root.right, targetSum-root.val, temp, res);
+            temp.remove(temp.size()-1);
+        }
+    }
+}

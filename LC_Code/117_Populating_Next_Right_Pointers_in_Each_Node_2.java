@@ -53,3 +53,34 @@ class Solution {
         return root;
     }
 }
+
+
+//round 2
+class Solution {
+    public Node connect(Node root) {
+        if(root == null){
+            return root;
+        }
+
+        Node head = root;
+        Node temp = head;
+        while(temp != null){
+            
+            Node dummy = new Node(0);
+            Node cur = dummy;
+            while(temp != null){
+                if(temp.left != null){
+                    cur.next = temp.left;
+                    cur = cur.next;
+                }
+                if(temp.right != null){
+                    cur.next = temp.right;
+                    cur = cur.next;
+                }
+                temp = temp.next;
+            }
+            temp = dummy.next;
+        }
+        return root;
+    }
+}
