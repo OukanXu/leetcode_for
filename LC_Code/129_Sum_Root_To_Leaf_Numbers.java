@@ -95,3 +95,31 @@ class Solution {
         return dfs(root.left,preSum) + dfs(root.right, preSum);
     }
 }
+
+
+//round 2
+class Solution {
+    public int res = 0;
+    public int sumNumbers(TreeNode root) {
+        int temp = 0;
+
+        dfs(root,temp);
+        return res;
+    }
+
+    public void dfs(TreeNode root, int temp){
+        if(root.left == null && root.right == null){
+            res += temp*10 + root.val;
+            return;
+        }
+
+        if(root.left != null){
+            dfs(root.left,temp*10+root.val);
+        }
+        if(root.right != null){
+            dfs(root.right,temp*10+root.val);
+        }   
+        
+
+    }
+}
