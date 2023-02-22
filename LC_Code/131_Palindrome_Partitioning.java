@@ -42,3 +42,47 @@ class Solution {
         return true;
     }
 }
+
+
+
+
+
+
+
+//round 2
+class Solution {
+    public List<List<String>> partition(String s) {
+        int n = s.length();
+        boolean dp[][] = new boolean[n][n];
+        List<String> temp = new ArrayList<>();
+        List<List<String>> res = new ArrayList<>();
+
+        int i = 0;
+        dfs(s,dp,temp,res,i);
+        return res;
+    }
+
+    public void dfs(String s, boolean dp[][], List<String> temp, List<List<String>> res, int index){
+        if(index == s.length()){
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int i = index; i < s.length(); i++){
+            if(check(s,dp,index,i)){
+                temp.add(s.substring(index,i+1));
+                dfs(s,dp,temp,res,i+1);
+                temp.remove(temp.size()-1);
+            }
+        }
+    }
+
+    public boolean check(String s,boolean dp[][] ,int i, int j){
+        if(i >= j){
+            dp[i][j] = true;
+        }else if(s.charAt(i) == s.charAt(j)){
+            dp[i][j] = check(s,dp,i+1,j-1);
+        }
+        return dp[i][j];
+    }
+}
