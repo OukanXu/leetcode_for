@@ -31,3 +31,34 @@ class Solution {
         return pre.next;
     }
 }
+
+
+//round 2
+class Solution {
+    public ListNode insertionSortList(ListNode head) {
+        ListNode pre = new ListNode(Integer.MIN_VALUE,head);
+
+        ListNode cur = head;
+
+        while(cur.next != null){
+            if(cur.next.val >= cur.val){
+                cur = cur.next;
+            }else{
+                ListNode temp = cur.next;
+                cur.next = temp.next;
+                ListNode dummy = pre;
+                while(dummy.next.val < temp.val){
+                    dummy = dummy.next;
+                }
+
+                ListNode afterdummy = dummy.next;
+                dummy.next = temp;
+                temp.next = afterdummy;
+            }
+        }
+        return pre.next;
+        
+    }
+}
+
+

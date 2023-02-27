@@ -41,3 +41,40 @@ public class Solution {
         
     }
 }
+
+//round 2
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        if(head == null || head.next == null){
+            return null;
+        }
+
+        ListNode dummy = new ListNode(-1,head);
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+
+        while(fast.next != null){
+            fast = fast.next;
+            slow = slow.next;
+
+            if(fast.next != null){
+                fast = fast.next;
+            }
+
+            if(fast == slow){
+                break;
+            }
+        }
+
+        if(fast.next == null){
+            return null;
+        }else{
+            fast = dummy;
+            while(fast != slow){
+                fast = fast.next;
+                slow = slow.next;
+            }
+            return fast;
+        }
+    }
+}
