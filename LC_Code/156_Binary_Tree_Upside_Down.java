@@ -35,3 +35,26 @@ class Solution {
         return preFather;
     }
 }
+
+
+//round 2
+class Solution {
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        TreeNode father = null;
+        TreeNode preRight = null;
+
+        while(root != null){
+            TreeNode left = root.left;
+            root.left = preRight;
+
+            TreeNode right = root.right;
+            root.right = father;
+
+            father = root;
+            preRight = right;
+
+            root = left;
+        }
+        return father;
+    }
+}

@@ -51,3 +51,60 @@ class Solution {
         return max;
     }
 }
+
+
+//round 2
+class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        if(s.length() < 3){
+            return s.length();
+        }
+        int left = 0;
+        int right = 0;
+        HashMap<Character,Integer> map = new HashMap<>();
+        int n = s.length();
+        int res = 2;
+        while(right < n){
+            map.put(s.charAt(right),right);
+            if(map.size() > 2){
+                int min_index = Collections.min(map.values());
+                map.remove(s.charAt(min_index));
+                res = Math.max(res,right-left);
+                left = min_index+1;
+            }
+            right++;
+        }
+        return Math.max(res,right-left);
+    }
+}
+
+
+//faster
+class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        char[] chars = s.toCharArray();
+        int len = chars.length;
+        if (len < 3) {
+            return len;
+        }
+        int[] temp = new int[128];
+        int left = 0, right = 0;
+        int count = 0, ans = 0;
+        while (right < len) {
+            if (temp[chars[right] - '0'] == 0) {
+                count++;
+            }
+            temp[chars[right] - '0']++;
+            while (count > 2) {
+                temp[chars[left] - '0']--;
+                if (temp[chars[left] - '0'] == 0) {
+                    count--;
+                }
+                left++;
+            }
+            ans = Math.max(ans, right - left + 1);
+            right++;
+        }
+        return ans;
+    }
+}

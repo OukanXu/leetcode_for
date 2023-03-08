@@ -715,6 +715,36 @@ L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 当当前值为负数时，max 和 min 交换
 
 
+153. Find Minimum in Rotated Sorted Array
+在旋转数组中找最小值
+
+解： 前提条件， nums[left] > nums[right], 所以只需要将mid与right对比，来缩小范围
+
+
+155. Min Stack
+实现最小堆，能在常数时间内找到元素的最小值
+
+解： 利用两个Deque, 一个存放按照顺序进来的元素，一个存放当时元素的最小值
+
+
+156. Binary Tree Upside Down
+翻转二叉树
+
+解： 递归（没想明白）
+    迭代： 确认前父节点，前兄弟节点，自顶向下遍历，   也可自底向上
+
+
+
+159. Longest Substring with At Most Two Distinct Characters
+给你一个字符串 s ，请你找出 至多 包含 两个不同字符 的最长子串，并返回该子串的长度
+
+解： 双指针 + 哈希表    优化： 双指针 + 数组
+
+
+160. Intersection of Two Linked Lists
+给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null
+
+解： 双指针，找到两个链表长度，抹平差值，一起跳跃，相等就是交点
 
 
 
