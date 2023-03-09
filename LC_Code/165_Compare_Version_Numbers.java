@@ -29,3 +29,35 @@ class Solution {
 }
 
 
+//round 2
+class Solution {
+    public int compareVersion(String version1, String version2) {
+        int len1 = version1.length();
+        int len2 = version2.length();
+
+        int i = 0;
+        int j = 0;
+
+        while(i < len1 || j < len2){
+            int sum1 = 0;
+            int sum2 = 0;
+            for(; i < len1 && version1.charAt(i) != '.';i++){
+                sum1 = sum1*10 + Integer.valueOf(version1.charAt(i)-'0');
+            }
+
+            for(; j < len2 && version2.charAt(j) != '.';j++){
+                sum2 = sum2*10 + Integer.valueOf(version2.charAt(j)-'0');
+            }
+
+            if(sum1 > sum2){
+                return 1;
+            }else if(sum1 < sum2){
+                return -1;
+            }
+            i++;
+            j++;
+        }
+        return 0;
+    }
+}
+

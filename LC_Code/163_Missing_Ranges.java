@@ -33,3 +33,52 @@ class Solution {
         return res;
     }
 }
+
+
+
+//round 2
+class Solution {
+    public List<String> findMissingRanges(int[] nums, int lower, int upper) {
+        List<String> res = new ArrayList<>();
+
+        if(nums.length == 0){
+            if(upper-lower> 0){
+                res.add(deal(lower-1,upper+1));
+            }else{
+                res.add(String.valueOf(lower));
+            }
+            return res;
+        }
+        if(nums[0] - lower > 1){
+            res.add(deal(lower-1,nums[0]));
+        }else if(nums[0] - lower == 1){
+            res.add(String.valueOf(lower));
+        } 
+        for(int i = 0; i < nums.length-1; i++){
+            if(nums[i+1] - nums[i] > 1){
+                res.add(deal(nums[i],nums[i+1]));
+            }
+        }
+
+        if(upper - nums[nums.length-1] > 1){
+            res.add(deal(nums[nums.length-1],upper+1));
+        }else if(upper - nums[nums.length-1] == 1){
+            res.add(String.valueOf(upper));
+        }
+        return res;
+    }
+
+    public String deal(int a, int b){
+        StringBuilder sb = new StringBuilder();
+
+        if(b-a == 2){
+            sb.append(String.valueOf(a+1));
+        }else{
+            sb.append(String.valueOf(a+1));
+            sb.append("->");
+            sb.append(String.valueOf(b-1));
+        }
+
+        return sb.toString();
+    }
+}

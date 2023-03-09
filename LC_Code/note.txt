@@ -746,21 +746,38 @@ L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 
 解： 双指针，找到两个链表长度，抹平差值，一起跳跃，相等就是交点
 
+161. One Edit Distance
+给定两个字符串 s 和 t ，如果它们的编辑距离为 1 ，则返回 true ，否则返回 false
+
+解： 判读长度差值是否小于2，判断当有字母不相等时，后面是否相等
 
 
+162. Find Peak Element
+峰值元素是指其值严格大于左右相邻值的元素。
+给你一个整数数组 nums，找到峰值元素并返回其索引。数组可能包含多个峰值，在这种情况下，返回 任何一个峰值 所在位置即可
+
+解： 根据mid和mid+1的大小，判断是在上坡、下坡还是谷底
 
 
+163. Missing Ranges
+给定一个排序的整数数组 nums ，其中元素的范围在 闭区间 [lower, upper] 当中，返回不包含在数组中的缺失区间
 
 
+解： 分类讨论， 首元素和lower， 元素之间，末尾元素和upper
 
 
+165. Compare Version Numbers
+给你两个版本号 version1 和 version2 ，请你比较它们
+
+解： 双指针， 比较每个.分隔出来的数字的大小
 
 
+167. Two Sum II - Input Array Is Sorted
+给你一个下标从 1 开始的整数数组 numbers ，该数组已按 非递减顺序排列  ，请你从数组中找出满足相加之和等于目标数 target 的两个数。
+如果设这两个数分别是 numbers[index1] 和 numbers[index2] ，则 1 <= index1 < index2 <= numbers.length 。
+以长度为 2 的整数数组 [index1, index2] 的形式返回这两个整数的下标 index1 和 index2。
 
-
-
-
-
+解： 双指针 
 
 
 
