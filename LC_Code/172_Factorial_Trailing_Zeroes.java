@@ -16,3 +16,36 @@ class Solution {
         return ans;
     }
 }
+
+
+//round 2
+class Solution {
+    public int trailingZeroes(int n) {
+        if(n < 5){
+            return 0;
+        }
+
+        int res = 0;
+        for(int i = 5; i <= n; i+=5){
+            int y = i;
+            while(y % 5 == 0 && y >= 5){
+                res++;
+                y /= 5;
+            }
+        }
+        return res;
+    }
+}
+
+
+// 分别计算数里面有几个数含有几个5
+class Solution {
+    public int trailingZeroes(int n) {
+        int ans = 0;
+        while (n != 0) {
+            n /= 5;
+            ans += n;
+        }
+        return ans;
+    }
+}

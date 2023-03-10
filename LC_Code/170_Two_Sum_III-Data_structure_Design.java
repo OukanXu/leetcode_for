@@ -42,3 +42,41 @@ class TwoSum {
  * obj.add(number);
  * boolean param_2 = obj.find(value);
  */
+
+
+ //round 2
+ class TwoSum {
+    public ArrayList<Integer> list;
+    boolean sorted;
+    public TwoSum() {
+        list = new ArrayList<>();
+        sorted = false;
+    }
+    
+    public void add(int number) {
+        list.add(number);
+        sorted = false;
+    }
+    
+    public boolean find(int value) {
+        if(!sorted){
+            Collections.sort(list);
+            sorted = true;
+        }
+
+        
+        int left = 0; 
+        int right = list.size()-1;
+        while(left < right){
+            if(list.get(left) + list.get(right) > value){
+                right--;
+            }else if(list.get(left) + list.get(right) < value){
+                left++;
+            }else{
+                return true;
+            }
+        }
+        return false;
+        
+    }
+}
